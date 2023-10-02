@@ -1,0 +1,438 @@
+DSA tips: PTS(pattern, template, speedrun)
+Pattern: ask many question: freq req, kth smallest/largest/top/closest , involves linkedlist, holds monotonic condition , choices/permutation/combination , subarray/substring
+consecutive/rectangle, sequential ordering [prev greater , next greater , prev smaller , next smaller], no of component/same comp/diff comp .... 
+Template: TwoPointer,SlidingWindow,BinarySearch,PrefixSum,DFS/BFS,UnionFind,TopologicalSort,Trie,DP,MonoTonicStack,MonotonicQueue,....
+SpeedRun: sol in mind just speak it yrsf or just visualize it.
+Interview Tips: Start with brute force -->   make it optimal.
+
+Two pointer: one input , opposite ends [example: palindrome]
+
+def fn(arr):
+    left , right = 0 , len(arr) - 1
+
+    while left < right:
+        # do some logic here with left and right
+        left , right = left + 1 , right - 1
+    
+    return sth
+ 
+Two Pointer: two input , exhaust both [example: two sorted arr, merge them]
+
+def fn(arr1, arr2):
+    i = j = 0
+
+    while i < len(arr1) and j < len(arr2):
+        # do some logic here with i and j
+         i , j = i + 1, j - 1
+    
+    while i < len(arr1):
+        # do logic
+        i += 1
+    
+    while j < len(arr2):
+        # do logic
+        j += 1
+    
+
+Sliding Window: Variable Size Window : Longest [example: longest sustring without repeating character]
+
+def fn(arr):
+    left = ans = curr = 0
+
+    for right in range(len(arr)):
+        # do logic here to add arr[right] to curr
+
+        while WINDOW_CONDITION_BROKEN:
+            # remove arr[left] from curr
+            left += 1
+
+        # update ans
+    
+    return ans
+
+Sliding Window: Variable Size Window - Smallest [example: ]
+
+def sliding_window_flexible_shortest(input):
+    # input == arr
+    initialize  ans
+    left = 0
+    for right in range(len(input)):
+        # append input[right] to window
+	    # window is guaranteed to be valid here
+        while valid(window):
+            ans = min(ans, window)      
+            remove input[left] from window
+            left += 1
+    return ans
+
+Sliding window: Fixed Size window [example: max sum of subarray of size k aka window_size]
+
+def sliding_window_fixed(arr, window_size):
+    ans  = func(arr[0:window_size])
+    for right in range(window_size, len(arr)):
+        left = right - window_size
+        remove arr[left] from window
+        append arr[right] to window
+        ans = optimal(ans, window)
+    return ans
+
+Prefix Sum: via creation of new arr , [example: ]
+
+def fn(arr):
+    prefix = [arr[0]]
+    for i in range(1, len(arr)):
+        prefix.append(prefix[-1] + arr[i])
+    
+    return prefix
+
+Prefix Sum: via modifying the original arr, [example: ]
+
+def func(arr):
+    for i in range(1,len(arr)):
+        arr[i] += arr[i - 1]
+
+
+Monotonic Increasing Stack: [example: ]
+
+def fn(arr):
+    stack = []
+    ans = 0
+
+    for num in arr:
+        # for monotonic decreasing, just flip the > to <
+        while stack and stack[-1] > num:
+            # do logic
+            stack.pop()
+        stack.append(num)
+    
+    return ans
+
+Heap : [example: top k element]
+
+import heapq
+
+def fn(arr, k):
+    heap = []
+    for num in arr:
+        # do some logic to push onto heap according to problem's criteria
+        heapq.heappush(heap, num)
+        if len(heap) > k:
+            heapq.heappop(heap)
+    
+    return [num for num in heap]
+
+DFS : recursive / iterative on tree / graph
+
+DFS recursive on Tree: [example: preorder traversal]
+
+def dfs(root):
+    if not root:
+        return
+    
+    ans = 0
+
+    # do logic
+    dfs(root.left)
+    dfs(root.right)
+    return ans
+
+DFS iterative on Tree:
+
+def dfs(root):
+    stack = [root]
+    ans = 0
+
+    while stack:
+        node = stack.pop()
+        # do logic
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
+
+    return ans
+
+DFS recursive on Graph:
+
+def fn(graph):
+    def dfs(node):
+        ans = 0
+        # do some logic
+        for neighbor in graph[node]:
+            if neighbor not in seen:
+                seen.add(neighbor)
+                ans += dfs(neighbor)
+        
+        return ans
+
+    seen = {START_NODE}
+    return dfs(START_NODE)
+
+DFS iterative on Graph:
+
+def fn(graph):
+    stack = [START_NODE]
+    seen = {START_NODE}
+    ans = 0
+
+    while stack:
+        node = stack.pop()
+        # do some logic
+        for neighbor in graph[node]:
+            if neighbor not in seen:
+                seen.add(neighbor)
+                stack.append(neighbor)
+    
+    return ans
+
+BFS iterative on tree:
+
+from collections import deque
+
+def fn(root):
+    queue = deque([root])
+    ans = 0
+
+    while queue:
+        current_length = len(queue)
+        # do logic for current level
+
+        for _ in range(current_length):
+            node = queue.popleft()
+            # do logic
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+
+    return ans
+
+BFS iterative on Graph:
+
+from collections import deque
+
+def fn(graph):
+    queue = deque([START_NODE])
+    seen = {START_NODE}
+    ans = 0
+
+    while queue:
+        node = queue.popleft()
+        # do some logic
+        for neighbor in graph[node]:
+            if neighbor not in seen:
+                seen.add(neighbor)
+                queue.append(neighbor)
+    
+    return ans
+
+Binary Search: any occurence, [target exist in arr]
+
+def fn(arr, target):
+    initialize ans
+    left = 0
+    right = len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        if arr[mid] > target:
+            right = mid - 1
+        else:
+            left = mid + 1
+    
+    return ans
+
+Binary Search: first occurence, [example: ]
+
+def func(arr,tar):
+    res = len(arr)
+    beg , end = 0 , len(arr) - 1
+    while beg <= end:
+        mid = (beg + end)//2
+        if arr[mid] >= target:
+            res = mid
+            end = mid + 1
+        else:
+            beg = mid - 1
+    return -1 if res == len(arr) else return res
+
+
+Binary Search: last occurence, [example: ]
+
+def func(arr, tar):
+    res = len(arr)
+    beg , end = 0 , len(arr) - 1
+    while beg <= end:
+        mid = beg - (beg - end)//2
+        if arr[mid] >= tar:
+            res = mid
+            beg = mid + 1
+        else:
+            end = mid - 1
+    res -1 if res == len(arr) else res
+
+Binary Search: looking for minimum, [example: ]
+
+Binary Search: looking for maximum, [example: ]
+
+Recursion:
+1.Direct Recursion:
+2.Indirect Recursion:
+
+def func(n):
+    # handle edge case/ base case
+    # make the problem smaller
+    return n * func(n-1)
+
+BackTracking: (take/reject, includes/excludes, choose/skip)
+
+def backtrack(curr, OTHER_ARGUMENTS...):
+    if (BASE_CASE):
+        # modify the answer
+        return
+    
+    ans = 0
+    for (ITERATE_OVER_INPUT):
+        # modify the current state
+        ans += backtrack(curr, OTHER_ARGUMENTS...)
+        # undo the modification of the current state
+    
+    return ans
+
+
+DP:top-down / memoization .
+def func(n):
+    # handle edge case/ base case
+    # check if we have sol for problem -> cache[key]
+    # solve the problem/subproblem and save it into cache
+    return sol
+
+
+DP:bottom-up / tabulation .
+1.Like Fibonacci Num: 1-D/Linear seq example{min-cost-climbing-stairs, house-robber}
+2.Like 0/1 Knapsack: example{coin-change,partition-equal-subset-sum,no-of-dice-roll-with-target-sum}
+3.Like Unbounded Knapsack:
+4a.On Grid: example{unique-path,min-path-sum,maximal-square,dungeon-game}
+4b.Like LCS: two seq: example{edit-distance,distinct-subsequence,uncrossed-line,shortest-common-superstring}
+5.Like LIS: [length / no of LIS / LIS seq] example {count-num-of-team,partion-array-for-max-sum}
+6.Like MCM/BB: 
+7.Misc: DP with hashing/DP with BinarySearch + marking algo:
+
+
+Trie: prefix tree []
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.endOfWord = False
+
+class Trie:
+
+    def __init__(self):
+        self.root = TrieNode()
+        
+
+    def insert(self, word: str) -> None:
+        cur = self.root
+        for ch in word:
+            if ch not in cur.children:
+                cur.children[ch] = TrieNode()
+            cur = cur.children[ch]
+        cur.endOfWord = True
+
+    def search(self, word: str) -> bool:
+        cur = self.root
+
+        for ch in word:
+            if ch not in cur.children:
+                return False
+            cur = cur.children[ch]
+        return cur.endOfWord
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        cur = self.root
+        for ch in prefix:
+            if ch not in cur.children:
+                return False
+            cur = cur.children[ch]
+        return True
+
+
+Topological Sort:
+
+def find_indegree(graph):
+    indegree = { node: 0 for node in graph }  # dict
+    for node in graph:
+        for neighbor in graph[node]:
+            indgree[neighbor] += 1
+    return indegree
+
+
+def topo_sort(graph):
+    res = []
+    q = deque()
+    indegree = find_indegree(graph)
+    for node in indegree:
+        if indegree[node] == 0:
+            q.append(node)
+    while len(q) > 0:
+        node = q.popleft()
+        res.append(node)
+        for neighbor in graph[node]:
+            indegree[neighbor] -= 1
+            if indegree[neighbor] == 0:
+                q.append(neighbor)
+    return res if len(graph) == len(res) else None
+
+Union Find:
+
+# Initialize parent array, rank array and res
+par = [i for i in range(n)]
+rank, res = [1] * n, 0
+
+# Find operation with path compression
+def find(n):
+    p = par[n]
+    while p != par[p]:
+        # Path compression
+        par[p] = par[par[p]]
+        p = par[p]
+    return p
+
+# Union operation with rank-based merging
+def union(n1, n2):
+    p1, p2 = find(n1), find(n2)
+    if p1 == p2:    return
+
+    if rank[p1] > rank[p2]:
+        par[p2] = p1
+        rank[p1] += rank[p2]
+    else:
+        par[p1] = p2
+        rank[p2] += rank[p1]
+
+**How to utilize time constraint: 1sec == 10^8 computation.
+N <= 10        => O(N!)
+N <= 25        => O(2^N)
+N <= 100       => O(N^4)
+N <= 500       => O(N^3)
+N <= 1000      => O(N^2 * sqrt(N))
+N <= 10^4      => O(N^2)
+N <= 10^5      => O(N*sqrt(N))
+N <= 10^6      => O(N*log(N))
+N <= 10^8      => O(N)
+N <= 10^12     => O(sqrt(N))
+..........     => O(log(N)) , O(1)
+
+How to solve any problem:
+1.Re-define the problem , in your words.
+2.understand the i/0 , take your own example .
+3.write the step by dividing the logic .(By intuition/observation)
+4.convert into code.
+
+How to generate good test cases:
+1.Element constraint +ve, -ve, 0 , dupl , dist, adj ele are same/diff, sorted,unsorted.
+2.Make all pattern like Increasing , decreasing and alternating if feasible.
+3.Check on boundary , it might give you TLE.
