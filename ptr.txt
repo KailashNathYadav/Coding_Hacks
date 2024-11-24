@@ -428,7 +428,7 @@ N <= 10^12     => O(sqrt(N))
 
 How to solve any problem:
 1.Re-define the problem , in your words.
-2.understand the i/0 , take your own example .
+2.understand the i/o , take your own example .
 3.write the step by dividing the logic .(By intuition/observation)
 4.convert into code.
 
