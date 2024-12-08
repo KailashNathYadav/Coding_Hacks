@@ -436,4 +436,5 @@ How to solve any problem:
 How to generate good test cases:
 1.Element constraint +ve, -ve, 0 , dupl , dist, adj ele are same/diff, sorted,unsorted.
 2.Make all pattern like Increasing , decreasing and alternating if feasible.
-3.Check on boundary , it might give you TLE.
+3.Take different number of input.
+4.Check on boundary , it might give you TLE.
