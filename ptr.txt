@@ -1,9 +1,10 @@
 DSA tips: PTS(pattern, template, speedrun)
-Pattern: ask many question: freq req, kth smallest/largest/top/closest , involves linkedlist, holds monotonic condition , choices/permutation/combination , subarray/substring
-consecutive/rectangle, sequential ordering [prev greater , next greater , prev smaller , next smaller], no of component/same comp/diff comp .... 
-Template: TwoPointer,SlidingWindow,BinarySearch,PrefixSum,DFS/BFS,UnionFind,TopologicalSort,Trie,DP,MonoTonicStack,MonotonicQueue,....
+Pattern: ask many question: freq req or any number of times or mapping => hashmap, kth smallest/largest/top/closest => heap, involves linkedlist => 2 pointer , slow & fast pointer, holds monotonic condition => binary search , choices/permutation/combination => backtracking/dp , subarray/substring/consecutive/rectangle => (preprocessing) sliding window, sequential ordering [prev greater , next greater , prev smaller , next smaller] => stack or monotonic stack, no of component/same comp/diff comp/group => union find , shortest move,operation => BFS, val in interval [0/1 to n /n +1] => cycle sort .... 
+Template: TwoPointer,PrefixSum,SlidingWindow,BinarySearch,DFS/BFS,UnionFind,TopologicalSort,Trie,DP,MonoTonicStack,MonotonicQueue,Heap,....
 SpeedRun: sol in mind just speak it yrsf or just visualize it.
 Interview Tips: Start with brute force -->   make it optimal.
+
+WHY SOLUTION WORK: VVVVVVVVVV IMPORTANT QUESTION
 
 Two pointer: one input , opposite ends [example: palindrome]
 
@@ -430,7 +431,7 @@ How to solve any problem:
 1.Re-define the problem , in your words.
 2.understand the i/o , take your own example .
 3.write the step by dividing the logic .(By intuition/observation)
-4.Dry Run it.
+4.Think why it is working, dry run it.
 5.Convert it into code.
 
 How to generate good test cases:
@@ -438,3 +439,5 @@ How to generate good test cases:
 2.Make all pattern like Increasing , decreasing and alternating if feasible.
 3.Take different number of input.
 4.Check on boundary , it might give you TLE.
+5.Tree or Graph take diff #of node like 0,1,2...
+6.Take care of all cases like cycle, connected disconnected.
