@@ -60,7 +60,7 @@ def sliding_window_flexible_shortest(input):
     left = 0
     for right in range(len(input)):
         # append input[right] to window
-	    # window is guaranteed to be valid here
+	# window is guaranteed to be valid here
         while valid(window):
             ans = min(ans, window)      
             remove input[left] from window
