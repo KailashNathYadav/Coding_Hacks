@@ -1,5 +1,5 @@
 DSA tips: PTS(pattern, template, speedrun) + Visualization.
-Pattern: ask many question: freq req or any number of times or mapping => hashmap, kth smallest/largest/top/closest => heap, involves linkedlist => 2 pointer , slow & fast pointer, holds monotonic condition => binary search , choices/subsequences/partition/split/permutation/combination => backtracking/dp , subarray/substring/consecutive/rectangle => (preprocessing) sliding window (fixed /flexible window size), sequential ordering [prev greater , next greater , prev smaller , next smaller] => stack or monotonic stack, no of component/same comp/diff comp/group => union find , shortest move,operation => BFS(single,multisource), val in interval [1,n] => cycle sort, string matching => KMP or rolling hash, prefix search/count/insert => Trie, interval => sorting, sth smarter => bit manipulation  .... 
+Pattern: ask many question: freq req or any number of times or mapping => hashmap, kth smallest/largest/top/closest => heap, involves linkedlist => 2 pointer , slow & fast pointer, holds monotonic condition => binary search , choices/subsequences/partition/split/permutation/combination => backtracking/dp , subarray/substring/consecutive/rectangle => (preprocessing) sliding window (fixed /flexible window size), sequential ordering [prev greater , next greater , prev smaller , next smaller] => stack or monotonic stack, no of component/same comp/diff comp/group/transitive relation => union find , shortest move,operation => BFS(single,multisource), val in interval [1,n] => cycle sort, string matching => KMP or rolling hash, prefix search/count/insert => Trie, interval => sorting, sth smarter => bit manipulation  .... 
 Template: TwoPointer,PrefixSum,SlidingWindow,BinarySearch,DFS/BFS,UnionFind,TopologicalSort,Trie,DP,MonoTonicStack,MonotonicQueue,Heap,Merge Sort,Quick Sort,Cycle Sort,Line Sweep ....
 SpeedRun: sol in mind just speak it yrsf or just visualize it.
 Interview Tips: Start with brute force -->   make it optimal.
@@ -7,7 +7,7 @@ Visualization: Draw things, take insights from it (Bit Manipulation, Graph, Recu
 
 WHY SOLUTION WORK: VVVVVVVVVV IMPORTANT QUESTION
 
-Two pointer: one input , opposite ends [example: palindrome]
+Two pointer: one input , opposite ends [example: palindrome, 2 sum on sorted array]
 
 def fn(arr):
     left , right = 0 , len(arr) - 1
@@ -17,6 +17,14 @@ def fn(arr):
         left , right = left + 1 , right - 1
     
     return sth
+
+Two Pointer: one input , same ends [example: remove duplicate, compaction,mid of linked list]
+
+def fn(list):
+    slow,fast = list,list
+    while fast and fast.next:
+	slow,fast = slow.next,fast.next.next
+    return slow
  
 Two Pointer: two input , exhaust both [example: two sorted arr, merge them]
 
@@ -61,7 +69,7 @@ def sliding_window_flexible_shortest(input):
     for right in range(len(input)):
         # append input[right] to window
 	# window is guaranteed to be valid here
-        while valid(window):
+        while VALID(WINDOW):
             ans = min(ans, window)      
             remove input[left] from window
             left += 1
