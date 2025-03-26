@@ -5,7 +5,8 @@ SpeedRun: sol in mind just speak it yrsf or just visualize it.
 Interview Tips: Start with brute force -->   make it optimal.
 Visualization: Draw things, take insights from it (Bit Manipulation, Graph, Recursion).
 
-WHY SOLUTION WORK: VVVVVVVVVV IMPORTANT QUESTION
+WHY SOLUTION WILL WORK: VVVVVVVVVV IMPORTANT QUESTION.
+WHY SOLUTION WILL NOT WORK: vvvvvvvvvvvv IMPORTANT QUESTION.
 
 Two pointer: one input , opposite ends [example: palindrome, 2 sum on sorted array]
 
@@ -236,7 +237,7 @@ def fn(graph):
     
     return ans
 
-Binary Search: any occurence, [target exist in arr]
+Binary Search: any occurence, [target exist in arr : 1,2,3,5,6,6,8,9]
 
 def fn(arr, target):
     initialize ans
@@ -253,7 +254,7 @@ def fn(arr, target):
     
     return ans
 
-Binary Search: first occurence, [example: ]
+Binary Search: first occurence, [example: arr : [1,2,3,5,6,6,8,9]]
 
 def func(arr,tar):
     res = len(arr)
@@ -268,7 +269,7 @@ def func(arr,tar):
     return -1 if res == len(arr) else return res
 
 
-Binary Search: last occurence, [example: ]
+Binary Search: last occurence, [example: arr : [1,2,3,5,6,6,8,9]]
 
 def func(arr, tar):
     res = len(arr)
@@ -282,9 +283,10 @@ def func(arr, tar):
             end = mid - 1
     res -1 if res == len(arr) else res
 
-Binary Search: looking for minimum, [example: ]
+Binary Search: Optimization Problem, looking for minimum/maximum, [example: Book Allocation Prob, Aggresive Cow].
+Modified Binary Search: Rotated Sorted Array [example: arr[3,4,5,1,2]].
+Binary Search on 2D Matrix: (example : row-wise & col-wise sorted, row-wise,col-wise and wrap-around).
 
-Binary Search: looking for maximum, [example: ]
 
 Recursion:
 1.Direct Recursion:
