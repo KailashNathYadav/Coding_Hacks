@@ -1,12 +1,15 @@
-DSA tips: DPTS(debugging,pattern, template, speedrun) + I/O Analysis +  More Question + Validation + Visualization.
+DSA tips: DPTS(debugging , pattern, template, speed-run) + I/O Analysis +  More Question + Validation + Visualization.
+Debugging : Give Proof of Correctness (atleast intuition) Generate good test case and check it`s correctness. 
 Pattern: ask many question: freq req or any number of times or mapping => hashmap, kth smallest/largest/top/closest => heap, involves linkedlist => 2 pointer , slow & fast pointer, holds monotonic condition => binary search , choices/subsequences/partition/split/permutation/combination => backtracking/dp , subarray/substring/consecutive/rectangle => (preprocessing) sliding window (fixed /flexible window size), sequential ordering [prev greater , next greater , prev smaller , next smaller] => stack or monotonic stack, no of component/same comp/diff comp/group/transitive relation/cut/remove => union find , shortest move,operation => BFS(single,multisource), val in interval [1,n] => cycle sort, string matching => KMP or rolling hash, prefix search/count/insert => Trie, interval => sorting, sth smarter => bit manipulation , range query(sum,min,max) =>  segment/fenwick tree.... 
 Template: TwoPointer,PrefixSum,SlidingWindow,BinarySearch,DFS/BFS,UnionFind,TopologicalSort,Trie,DP,MonoTonicStack,MonotonicQueue,Heap,Merge Sort,Quick Sort,Cycle Sort,Line Sweep ....
 SpeedRun: sol in mind just speak it yrsf or just visualize it.
 Interview Tips: Start with brute force -->   make it optimal.
 Visualization: Analyse what we have & what we want => Draw things, take insights from it (Bit Manipulation, Graph, Recursion).
 
-WHY SOLUTION WILL WORK: VVVVVVVVVV IMPORTANT QUESTION.
-WHY SOLUTION WILL NOT WORK: vvvvvvvvvvvv IMPORTANT QUESTION.
+Pattern Identification is done by fast thinking and debugging/PoC is slow in nature.
+
+WHY SOLUTION WILL WORK (Proof of Correctness): VVVVVVVVVV IMPORTANT QUESTION.
+WHY SOLUTION WILL NOT WORK (Counter Example / Proof of incorrectness): VVVVVVVVV IMPORTANT QUESTION.
 
 Two pointer: one input , opposite ends [example: palindrome, 2 sum on sorted array]
 
@@ -409,9 +412,8 @@ def find(n):
     p = par[n]
     while p != par[p]:
         # Path compression
-        par[p] = par[par[p]]
-        p = par[p]
-    return p
+        par[p] = find(par[p])
+    return par[p]
 
 # Union operation with rank-based merging
 def union(n1, n2):
